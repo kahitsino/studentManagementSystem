@@ -74,29 +74,43 @@ document.querySelectorAll('.form-control, .form-select').forEach(input => {
     })
 })
 
-// password miss match error
+
 // Check for error messages in URL and display them
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const error = urlParams.get('error');
+    const error = urlParams.get('error') ? urlParams.get('error').split(',') : [];
+
+    // Restore data
+    if (urlParams.has('fname')) document.querySelector('[name="fname"]').value = urlParams.get('fname');
+    if (urlParams.has('lname')) document.querySelector('[name="lname"]').value = urlParams.get('lname');
+    if (urlParams.has('email')) document.querySelector('[name="email"]').value = urlParams.get('email');
+    if (urlParams.has('level')) {
+        document.getElementById('level').value = urlParams.get('level');
+        showOptions();
+
+        setTimeout(() => {
+            if (urlParams.has('strand')) document.getElementById('strand').value = urlParams.get('strand');
+            if (urlParams.has('course')) document.getElementById('course').value = urlParams.get('course');
+        }, 100);
+    }
             
     const emailError = document.getElementById('emailTakenError');
     const passwordError = document.getElementById('passwordMissmatchError');
             
-    if (error === 'email_taken') {
+    if (error.includes('email_taken')) {
         emailError.style.display = 'block';
         // Highlight the email field
         document.getElementById('email').classList.add('is-invalid');
     } else {
-        emailError.style.display = 'none';
+        emailError.style.display = '';
     }
 
-    if (error === 'password_not_match') {
+    if (error.includes('password_not_match')) {
         passwordError.style.display = 'block';
         // Highlight the password fields
         document.getElementById('password').classList.add('is-invalid');
         document.getElementById('confirm_password').classList.add('is-invalid');
     } else {
-        passwordError.style.display = 'none';
+        passwordError.style.display = '';
     }
 });
