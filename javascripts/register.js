@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Add real-time email validation
-            if (this.value.length > 2 && this.value.includes('@')) {
+            if (this.value.length > 3 && this.value.includes('@')) {
                 checkEmailAvailability(this.value);
             }
         });

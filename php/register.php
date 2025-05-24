@@ -61,8 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
         $_SESSION['email'] = $email;
         $_SESSION['loggedin'] = true;
+        $_SESSION['password'] = $password;
         // success register
-        header('Location: ../public/index.html');
+        header('Location: ../public/studentPage.html');
         exit();
     } else {
         die('Error:' . $sql . '<br>' . $conn->error);

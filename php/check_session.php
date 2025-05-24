@@ -8,16 +8,15 @@ header("Expires: 0");
 
 $response = [
     'loggedin' => false,
-    'username' => null
+    'email' => null
 ];
 
-if (isset($_SESSION['username'], $_SESSION['password'])) {
-    if (filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL) &&
-        !empty(trim($_SESSION['password']))) {
+if (isset($_SESSION['email'], $_SESSION['loggedin']) === true) {
+    if (filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL) && $_SESSION['loggedin'] === true) {
         
         $response = [
             'loggedin' => true,
-            'email' => filter_var($_SESSION['email'])
+            'email' => filter_var($_SESSION['email'], FILTER_SANITIZE_EMAIL)
         ];
     }
 }
