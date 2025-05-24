@@ -15,10 +15,6 @@
                     <div class="form-control p-4 shadow rounded-3">
                         <h1 class="d-md-none d-lg-none">Enrollment</h1>
                         <form method="POST" action="../php/register.php" id="enrollmentForm" class="needs-validation" no validate>
-                            <div id="formErrors" class="mb-3">
-                                
-                                
-                            </div>
                             <div class="mb-3">
                                 <input type="text" class="form-control mt-3 py-2" name="fname" placeholder="First name" required>
                             </div>
@@ -31,10 +27,10 @@
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control mt-3 py-2" name="password" placeholder="Password" required>
-                                <span id="passwordMissmatchError" class="error-message" style="display: none;">Password not match.</span>
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control mt-3 py-2" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                                <span id="passwordMismatchError" class="error-message" style="display: none;">Password not match.</span>
                             </div>
                             <div class="mb-3 d-grid">
                                 <select id="level" class="py-2 form-select" name="level" required onchange="showOptions()">
