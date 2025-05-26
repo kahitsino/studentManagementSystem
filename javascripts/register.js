@@ -72,10 +72,10 @@ function showOptions() {
     strandDiv?.classList.add('d-none');
     courseDiv?.classList.add('d-none');
     
-    if (level === 'strand') {
+    if (level === 'shs') {
         strandDiv?.classList.remove('d-none');
         document.getElementById('strand')?.setAttribute('required', '');
-    } else if (level === 'course') {
+    } else if (level === 'college') {
         courseDiv?.classList.remove('d-none');
         document.getElementById('course')?.setAttribute('required', '');
     }
@@ -103,10 +103,10 @@ function validateForm(event) {
     
     // Program selection validation
     const level = document.getElementById('level').value;
-    if (level === 'strand' && !document.getElementById('strand').value) {
+    if (level === 'shs' && !document.getElementById('strand').value) {
         document.getElementById('strand').classList.add('is-invalid');
         isValid = false;
-    } else if (level === 'course' && !document.getElementById('course').value) {
+    } else if (level === 'college' && !document.getElementById('course').value) {
         document.getElementById('course').classList.add('is-invalid');
         isValid = false;
     }
@@ -163,10 +163,10 @@ function restoreFormState() {
     
     // Program selection errors
     if (errors.includes('strand_required')) {
-        document.getElementById('strand')?.classList.add('is-invalid');
+        document.getElementById('shs')?.classList.add('is-invalid');
     }
     if (errors.includes('course_required')) {
-        document.getElementById('course')?.classList.add('is-invalid');
+        document.getElementById('college')?.classList.add('is-invalid');
     }
 }
 
